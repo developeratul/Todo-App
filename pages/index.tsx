@@ -10,7 +10,7 @@ import TodosContainer from "../components/TodosContainer";
 import Header from "../components/Header";
 import StatusBar from "../components/StatusBar";
 
-const index = () => {
+const Home = () => {
   const { theme, setTheme } = useContext(ThemeContext);
   const { setTodos } = useContext(TodoContext);
 
@@ -35,4 +35,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Home;
