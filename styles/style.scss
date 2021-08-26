@@ -1,0 +1,283 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Josefin Sans;
+  outline: none;
+  text-decoration: none;
+  font-weight: 400;
+  user-select: none;
+}
+
+:root {
+  font-size: 18px;
+}
+
+$Bright-Blue: hsl(220, 98%, 61%);
+$Success-Color: hsl(130, 100%, 69%);
+
+.light {
+  --background: #e4e5f1;
+  --backgroundImage: url("../images/bg-desktop-light.jpg");
+  --backgroundImageSmall: url("../images/bg-mobile-light.jpg");
+  --itemColor: #fafafa;
+  --itemTextColor: #484b6a;
+  --other: hsl(236, 9%, 61%);
+}
+
+.dark {
+  --background: #161722;
+  --backgroundImage: url("../images/bg-desktop-dark.jpg");
+  --backgroundImageSmall: url("../images/bg-mobile-dark.jpg");
+  --itemColor: #25273c;
+  --itemTextColor: #cacddd;
+  --other: hsl(234, 11%, 52%);
+}
+
+li {
+  list-style: none;
+}
+button,
+input {
+  border: none;
+  background: none;
+  font-size: 1rem;
+  display: inline-block;
+  &:focus {
+    outline: none;
+  }
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--background);
+  color: var(--itemTextColor);
+  background-image: var(--backgroundImage);
+  background-size: 100% 300px;
+  background-repeat: no-repeat;
+  padding: 3rem 0;
+  transition: 0.3s;
+  .container {
+    width: 550px;
+    margin: auto;
+    // the header
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+      h2 {
+        color: #fff;
+        font-size: 2rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 0.5rem;
+      }
+      .icon_container {
+        button {
+          color: #fff;
+        }
+      }
+    }
+
+    // the todo creation box
+    .create_todo {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 1rem 1rem;
+      background: var(--itemColor);
+      border-radius: 5px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      align-items: center;
+      grid-column-gap: 1rem;
+      .icon_container {
+        grid-column: 1 / 2;
+        color: var(--other);
+      }
+      .input_container {
+        grid-column: 2 / -1;
+        input {
+          width: 100%;
+          color: var(--itemTextColor);
+          caret-color: var(--itemTextColor);
+          &::placeholder {
+            color: var(--other);
+          }
+        }
+      }
+    }
+
+    // this div is containing all the todos
+    .todos_container {
+      width: 100%;
+      background: var(--itemColor);
+      border-radius: 5px 5px 0 0;
+      overflow: hidden;
+      .no_message {
+        padding: 3rem 10px;
+        font-size: 1.1rem;
+        text-align: center;
+      }
+      .todos_list {
+        // a class for the li's if it is inactive
+        .inactive {
+          .todo_text_container {
+            color: var(--other);
+            text-decoration: line-through;
+            text-decoration-color: var(--other);
+          }
+          .icon_container {
+            button {
+              color: $Bright-Blue;
+            }
+          }
+        }
+        li {
+          width: 100%;
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          align-items: center;
+          grid-column-gap: 0.5rem;
+          padding: 0.5rem;
+          border-bottom: 1px solid var(--other);
+          background: var(--itemColor);
+          animation: fadeAnimation 0.3s linear alternate;
+          @keyframes fadeAnimation {
+            from {
+              transform: translate(-100%);
+              opacity: 0;
+            }
+            to {
+              transform: translate(0);
+              opacity: 1;
+            }
+          }
+          &:hover .remove_button {
+            display: block;
+          }
+          &:last-child {
+            border-bottom: none;
+          }
+          span {
+            button {
+              color: var(--other);
+              transition: color 0.3s;
+            }
+          }
+          .icon_container {
+            grid-column: 1 / 2;
+            &:hover button {
+              color: $Bright-Blue;
+            }
+          }
+          .todo_text_container {
+            grid-column: 2 / 10;
+            overflow-x: hidden;
+            transition: 0.2s;
+          }
+          .remove_button {
+            grid-column: 10 / -1;
+            display: none;
+            @media screen and (max-width: 768px) {
+              display: unset;
+            }
+            text-align: end;
+          }
+        }
+      }
+    }
+
+    // the status bar
+    .status_bar {
+      width: 100%;
+      background: var(--itemColor);
+      border-radius: 0 0 5px 5px;
+      border-top: 1px solid var(--other);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      * {
+        font-size: 0.85rem;
+        color: var(--other);
+      }
+
+      .filtering_options {
+        display: flex;
+        justify-content: flex-between;
+        .active {
+          color: $Bright-Blue;
+        }
+        .single_filter {
+          margin-right: 1rem;
+          cursor: pointer;
+          transition: 0.3s;
+          &:hover {
+            color: var(--itemTextColor);
+          }
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+
+      .clear_completed_button {
+        text-align: end;
+        button {
+          text-transform: capitalize;
+          font-size: 0.5rem;
+          transition: 0.3s;
+          &:hover {
+            color: red;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  main {
+    .container {
+      width: 500px;
+    }
+  }
+}
+
+// for the mobile and tablet type devices
+@media screen and (max-width: 768px) {
+  * {
+    cursor: default !important;
+  }
+
+  main {
+    background-image: var(--backgroundImageSmall);
+    .container {
+      width: 95%;
+      max-width: 500px;
+      // status bar
+      @media screen and (max-width: 540px) {
+        .status_bar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-direction: column;
+          flex-wrap: wrap;
+          row-gap: 10px;
+          padding: 1rem 0;
+          .clear_completed_button {
+            button {
+              padding: 0 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

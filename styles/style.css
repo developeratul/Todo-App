@@ -1,0 +1,369 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic);
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: Josefin Sans;
+  outline: none;
+  text-decoration: none;
+  font-weight: 400;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+:root {
+  font-size: 18px;
+}
+
+.light {
+  --background: #e4e5f1;
+  --backgroundImage: url("../images/bg-desktop-light.jpg");
+  --backgroundImageSmall: url("../images/bg-mobile-light.jpg");
+  --itemColor: #fafafa;
+  --itemTextColor: #484b6a;
+  --other: hsl(236, 9%, 61%);
+}
+
+.dark {
+  --background: #161722;
+  --backgroundImage: url("../images/bg-desktop-dark.jpg");
+  --backgroundImageSmall: url("../images/bg-mobile-dark.jpg");
+  --itemColor: #25273c;
+  --itemTextColor: #cacddd;
+  --other: hsl(234, 11%, 52%);
+}
+
+li {
+  list-style: none;
+}
+
+button,
+input {
+  border: none;
+  background: none;
+  font-size: 1rem;
+  display: inline-block;
+}
+
+button:focus,
+input:focus {
+  outline: none;
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--background);
+  color: var(--itemTextColor);
+  background-image: var(--backgroundImage);
+  background-size: 100% 300px;
+  background-repeat: no-repeat;
+  padding: 3rem 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+main .container {
+  width: 550px;
+  margin: auto;
+}
+
+main .container header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+main .container header h2 {
+  color: #fff;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.5rem;
+}
+
+main .container header .icon_container button {
+  color: #fff;
+}
+
+main .container .create_todo {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 1rem 1rem;
+  background: var(--itemColor);
+  border-radius: 5px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[12];
+      grid-template-columns: repeat(12, 1fr);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-column-gap: 1rem;
+}
+
+main .container .create_todo .icon_container {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+  color: var(--other);
+}
+
+main .container .create_todo .input_container {
+  grid-column: 2 / -1;
+}
+
+main .container .create_todo .input_container input {
+  width: 100%;
+  color: var(--itemTextColor);
+  caret-color: var(--itemTextColor);
+}
+
+main .container .create_todo .input_container input::-webkit-input-placeholder {
+  color: var(--other);
+}
+
+main .container .create_todo .input_container input:-ms-input-placeholder {
+  color: var(--other);
+}
+
+main .container .create_todo .input_container input::-ms-input-placeholder {
+  color: var(--other);
+}
+
+main .container .create_todo .input_container input::placeholder {
+  color: var(--other);
+}
+
+main .container .todos_container {
+  width: 100%;
+  background: var(--itemColor);
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+}
+
+main .container .todos_container .no_message {
+  padding: 3rem 10px;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+main .container .todos_container .todos_list .inactive .todo_text_container {
+  color: var(--other);
+  text-decoration: line-through;
+  -webkit-text-decoration-color: var(--other);
+          text-decoration-color: var(--other);
+}
+
+main .container .todos_container .todos_list .inactive .icon_container button {
+  color: #3a7bfd;
+}
+
+main .container .todos_container .todos_list li {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[12];
+      grid-template-columns: repeat(12, 1fr);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-column-gap: 0.5rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--other);
+  background: var(--itemColor);
+  -webkit-animation: fadeAnimation 0.3s linear alternate;
+          animation: fadeAnimation 0.3s linear alternate;
+}
+
+@-webkit-keyframes fadeAnimation {
+  from {
+    -webkit-transform: translate(-100%);
+            transform: translate(-100%);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeAnimation {
+  from {
+    -webkit-transform: translate(-100%);
+            transform: translate(-100%);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+    opacity: 1;
+  }
+}
+
+main .container .todos_container .todos_list li:hover .remove_button {
+  display: block;
+}
+
+main .container .todos_container .todos_list li:last-child {
+  border-bottom: none;
+}
+
+main .container .todos_container .todos_list li span button {
+  color: var(--other);
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+main .container .todos_container .todos_list li .icon_container {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+}
+
+main .container .todos_container .todos_list li .icon_container:hover button {
+  color: #3a7bfd;
+}
+
+main .container .todos_container .todos_list li .todo_text_container {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 8;
+  grid-column: 2 / 10;
+  overflow-x: hidden;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+main .container .todos_container .todos_list li .remove_button {
+  grid-column: 10 / -1;
+  display: none;
+  text-align: end;
+}
+
+@media screen and (max-width: 768px) {
+  main .container .todos_container .todos_list li .remove_button {
+    display: unset;
+  }
+}
+
+main .container .status_bar {
+  width: 100%;
+  background: var(--itemColor);
+  border-radius: 0 0 5px 5px;
+  border-top: 1px solid var(--other);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+main .container .status_bar * {
+  font-size: 0.85rem;
+  color: var(--other);
+}
+
+main .container .status_bar .filtering_options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: flex-between;
+      -ms-flex-pack: flex-between;
+          justify-content: flex-between;
+}
+
+main .container .status_bar .filtering_options .active {
+  color: #3a7bfd;
+}
+
+main .container .status_bar .filtering_options .single_filter {
+  margin-right: 1rem;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+main .container .status_bar .filtering_options .single_filter:hover {
+  color: var(--itemTextColor);
+}
+
+main .container .status_bar .filtering_options .single_filter:last-child {
+  margin-right: 0;
+}
+
+main .container .status_bar .clear_completed_button {
+  text-align: end;
+}
+
+main .container .status_bar .clear_completed_button button {
+  text-transform: capitalize;
+  font-size: 0.5rem;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+main .container .status_bar .clear_completed_button button:hover {
+  color: red;
+}
+
+@media screen and (max-width: 1024px) {
+  main .container {
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  * {
+    cursor: default !important;
+  }
+  main {
+    background-image: var(--backgroundImageSmall);
+  }
+  main .container {
+    width: 95%;
+    max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 768px) and (max-width: 540px) {
+  main .container .status_bar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    row-gap: 10px;
+    padding: 1rem 0;
+  }
+  main .container .status_bar .clear_completed_button button {
+    padding: 0 0;
+  }
+}
+/*# sourceMappingURL=style.css.map */
